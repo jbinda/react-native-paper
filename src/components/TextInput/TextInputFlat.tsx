@@ -229,8 +229,6 @@ class TextInputFlat extends React.Component<ChildTextInputProps, {}> {
               ...rest,
               ref: innerRef,
               onChangeText,
-              adjustsFontSizeToFit: true,
-              // @ts-ignore
               placeholder: label
                 ? parentState.placeholder
                 : this.props.placeholder,
