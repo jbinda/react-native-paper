@@ -11,6 +11,7 @@ import {
 } from 'react-native';
 import color from 'color';
 import InputLabel from './InputLabel';
+import Adornment from './Adornment';
 import type { RenderProps, ChildTextInputProps } from './types';
 
 import {
@@ -66,6 +67,8 @@ class TextInputFlat extends React.Component<ChildTextInputProps, {}> {
       onBlur,
       onChangeText,
       onLayoutAnimatedText,
+      right,
+      left,
       ...rest
     } = this.props;
 
@@ -218,42 +221,76 @@ class TextInputFlat extends React.Component<ChildTextInputProps, {}> {
           }}
         >
           <InputLabel parentState={parentState} labelProps={labelProps} />
-
-          {render(
-            ({
-              ...rest,
-              ref: innerRef,
-              onChangeText,
-              adjustsFontSizeToFit: true,
-              placeholder: label
-                ? parentState.placeholder
-                : this.props.placeholder,
-              placeholderTextColor: placeholderColor,
-              editable: !disabled && editable,
-              selectionColor:
-                typeof selectionColor === 'undefined'
-                  ? activeColor
-                  : selectionColor,
-              onFocus,
-              onBlur,
-              underlineColorAndroid: 'transparent',
-              multiline,
-              style: [
-                styles.input,
-                paddingOffset,
-                !multiline || (multiline && height)
-                  ? { height: flatHeight }
-                  : {},
-                paddingFlat,
-                {
+          <View style={{ flexDirection: 'row' }}>
+            {left && (
+              <Adornment
+                parentState={parentState}
+                hasActiveOutline={hasActiveOutline}
+                position="left"
+                padding={padding}
+                style={{
+                  height: labelHeight,
                   fontSize,
-                  color: inputTextColor,
-                  ...font,
-                  textAlignVertical: multiline && height ? 'top' : 'center',
-                },
-              ],
-            }: RenderProps)
-          )}
+                  top: topPosition,
+                  color: placeholderColor,
+                }}
+                renderItem={left}
+                {...rest}
+              />
+            )}
+
+            {render(
+              ({
+                ...rest,
+                ref: innerRef,
+                onChangeText,
+                adjustsFontSizeToFit: true,
+                placeholder: label
+                  ? parentState.placeholder
+                  : this.props.placeholder,
+                placeholderTextColor: placeholderColor,
+                editable: !disabled && editable,
+                selectionColor:
+                  typeof selectionColor === 'undefined'
+                    ? activeColor
+                    : selectionColor,
+                onFocus,
+                onBlur,
+                underlineColorAndroid: 'transparent',
+                multiline,
+                style: [
+                  styles.input,
+                  paddingOffset,
+                  !multiline || (multiline && height)
+                    ? { height: flatHeight }
+                    : {},
+                  paddingFlat,
+                  {
+                    fontSize,
+                    color: inputTextColor,
+                    ...font,
+                    textAlignVertical: multiline && height ? 'top' : 'center',
+                  },
+                ],
+              }: RenderProps)
+            )}
+            {right && (
+              <Adornment
+                parentState={parentState}
+                hasActiveOutline={hasActiveOutline}
+                position="right"
+                padding={padding}
+                style={{
+                  height: labelHeight,
+                  fontSize,
+                  top: topPosition,
+                  color: placeholderColor,
+                }}
+                renderItem={right}
+                {...rest}
+              />
+            )}
+          </View>
         </View>
       </View>
     );

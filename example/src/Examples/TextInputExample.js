@@ -8,7 +8,12 @@ import {
   KeyboardAvoidingView,
   type Theme,
 } from 'react-native';
-import { TextInput, HelperText, withTheme } from 'react-native-paper';
+import {
+  TextInput,
+  HelperText,
+  IconButton,
+  withTheme,
+} from 'react-native-paper';
 
 type Props = {
   theme: Theme,
@@ -77,6 +82,9 @@ class TextInputExample extends React.Component<Props, State> {
             placeholder="Type something"
             value={this.state.text}
             onChangeText={text => this.setState({ text })}
+            right={'kg'}
+            left={'kg'}
+            padding="none"
           />
           <TextInput
             style={[styles.inputContainerStyle, styles.fontSize]}
@@ -84,6 +92,31 @@ class TextInputExample extends React.Component<Props, State> {
             placeholder="Type something"
             value={this.state.largeText}
             onChangeText={largeText => this.setState({ largeText })}
+            right={() => 'kg'}
+            left={() => 'kg'}
+          />
+          <TextInput
+            style={[styles.inputContainerStyle, styles.fontSize]}
+            label="Flat input large font"
+            placeholder="Type something"
+            value={this.state.largeText}
+            onChangeText={largeText => this.setState({ largeText })}
+            right={() => (
+              <IconButton
+                icon="https"
+                size={24}
+                color={'green'}
+                onPress={() => {}}
+              />
+            )}
+            left={() => (
+              <IconButton
+                icon="https"
+                size={24}
+                color={'green'}
+                onPress={() => {}}
+              />
+            )}
           />
           <TextInput
             style={styles.inputContainerStyle}

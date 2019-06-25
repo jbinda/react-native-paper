@@ -354,6 +354,20 @@ class TextInput extends React.Component<TextInputProps, State> {
     });
   };
 
+  _onLayoutAdornment = (e, position) => {
+    if (position) {
+      this.setState({
+        adornmentLayout: {
+          ...this.state.adornmentLayout,
+          [position]: {
+            width: e.nativeEvent.layout.width,
+            measured: true,
+          },
+        },
+      });
+    }
+  };
+
   /**
    * @internal
    */
@@ -416,6 +430,7 @@ class TextInput extends React.Component<TextInputProps, State> {
         onBlur={this._handleBlur}
         onChangeText={this._handleChangeText}
         onLayoutAnimatedText={this._onLayoutAnimatedText}
+        onLayoutAdornment={this._onLayoutAdornment}
       />
     );
   }

@@ -34,6 +34,16 @@ export type State = {
     width: number,
     height: number,
   },
+  adornmentLayout: {
+    left: {
+      measured: boolean,
+      width: number,
+    },
+    right: {
+      measured: boolean,
+      width: number,
+    },
+  },
 };
 
 export type ChildTextInputProps = {|
@@ -44,8 +54,10 @@ export type ChildTextInputProps = {|
   onBlur?: (args: any) => void,
   onChangeText?: (value: string) => void,
   onLayoutAnimatedText?: (e: any) => void,
+  onLayoutAdornment?: (e: any, position: AdormentPosition) => void,
 |};
 
+export type AdormentPosition = 'left' | 'right';
 export type LabelProps = {
   placeholderStyle: any,
   placeholderOpacity: number | Animated.Value,
