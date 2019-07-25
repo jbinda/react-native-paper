@@ -50,9 +50,9 @@ export type TextInputProps = React.ComponentProps<typeof NativeTextInput> & {
    */
   selectionColor?: string;
   /**
-   * Underline color of the input.
+   * Line color of the input (underline or borderline).
    */
-  underlineColor?: string;
+  lineColor?: string;
   /**
    * Whether to apply padding to label and input.
    */

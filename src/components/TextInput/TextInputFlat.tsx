@@ -54,7 +54,7 @@ class TextInputFlat extends React.Component<ChildTextInputProps, {}> {
       label,
       error,
       selectionColor,
-      underlineColor,
+      lineColor,
       padding,
       dense,
       style,
@@ -95,7 +95,7 @@ class TextInputFlat extends React.Component<ChildTextInputProps, {}> {
       inputTextColor = colors.text;
       activeColor = error ? colors.error : colors.primary;
       placeholderColor = colors.placeholder;
-      underlineColorCustom = underlineColor || colors.disabled;
+      underlineColorCustom = lineColor || colors.disabled;
     }
 
     const containerStyle = {

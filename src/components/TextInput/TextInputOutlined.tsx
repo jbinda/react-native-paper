@@ -52,7 +52,7 @@ class TextInputOutlined extends React.Component<ChildTextInputProps, {}> {
       error,
       selectionColor,
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      underlineColor,
+      lineColor,
       dense,
       style,
       theme,
@@ -94,7 +94,8 @@ class TextInputOutlined extends React.Component<ChildTextInputProps, {}> {
     } else {
       inputTextColor = colors.text;
       activeColor = error ? colors.error : colors.primary;
-      placeholderColor = outlineColor = colors.placeholder;
+      placeholderColor = colors.placeholder;
+      outlineColor = lineColor || colors.placeholder;
     }
 
     const labelScale = MINIMIZED_LABEL_FONT_SIZE / fontSize;
